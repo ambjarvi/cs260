@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF=8"/>
+        <title>Why Remember HTML</title>
+    </head>
+    <body>
+        <h1>Why Remember?</h1>
+
+        <nav>
+            <li><a href="rememberToday.html">Remember Today</a></li>
+            <li><a href="myJournal.html">My Journal</a></li>
+            <li><a href="whyRemember.html">Why Remember?</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <button id="openLogIn">Log in/Sign in</button>
+        </nav>
+
+        <button id="giveIdea">Need an Idea?</button>
+        <!--this button needs to generate a random question if pressed-->
+        <form>
+            <label for="journalInput">What happened today?</label>
+            <input type="text" name="journalInput" id="journalInput">
+            <input type="submit" value="Log My Entry">
+            <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
+        </form>
+        <div id="logIn" class="popUpLogIn">
+            <div class="logInElements">
+                <form>
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username">
+                    <input type="submit" value="enter username">
+                    <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
+                </form>
+                <form>
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" id="password">
+                    <input type="submit" value="enter password">
+                    <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
+                </form>
+                <button id="logIntoExisting">Log In</button>
+                <button id="signUp">Sign Up</button>
+            </div>
+        </div>
+        
+    </body>
