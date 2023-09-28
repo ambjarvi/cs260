@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF=8"/>
+        <title>My Journal HTML</title>
+    </head>
+    <body>
+        <h1>My Journal</h1>
+
+        <nav>
+            <li><a href="rememberToday.html">Remember Today</a></li>
+            <li><a href="myJournal.html">My Journal</a></li>
+            <li><a href="whyRemember.html">Why Remember?</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+
+        </nav>
+        <form>
+            <label for="dateInput">What day do you want to remember?</label>
+            <input type="date" name="dateInput" id="dateInput">
+            <input type="submit" value="Remember this Day">
+
+            <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
+        </form>
+        <div id="pastEntry"></div>
+        <!--will need to program in JS that pastEntry text changes depending on day selected-->
+
+    </body>
