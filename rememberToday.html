@@ -12,16 +12,18 @@
             <li><a href="myJournal.html">My Journal</a></li>
             <li><a href="whyRemember.html">Why Remember?</a></li>
             <li><a href="leaderboard.html">Leaderboard</a></li>
-            <button id="openLogIn">Log in/Sign in</button>
         </nav>
-        <button id="giveIdea">Need an Idea?</button>
-        <!--this button needs to generate a random question if pressed-->
+        
         <form>
             <label for="journalInput">What happened today?</label>
             <input type="text" name="journalInput" id="journalInput">
             <input type="submit" value="Log My Entry">
             <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
         </form>
+
+        <button id="giveIdea" onClick="generateQuestion()">Need an Idea?</button>
+        <!--this button needs to generate a random question if pressed-->
+        <output type="text" id="question"></output>
         <div id="logIn" class="popUpLogIn">
             <div class="logInElements">
                 <form>
@@ -36,8 +38,8 @@
                     <input type="submit" value="enter password">
                     <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
                 </form>
-                <button id="logIntoExisting">Log In</button>
-                <button id="signUp">Sign Up</button>
+                <button id="logIntoExisting" onClick="validateLogIn()">Log In</button>
+                <button id="signUp" onClick="validateSignUp">Sign Up</button>
             </div>
         </div>
     </body>
