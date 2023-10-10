@@ -3,10 +3,10 @@
     <head>
         <link rel="stylesheet" type="text/css" href="index.css">
         <style>
-            body {
-                background-image:url(pictures/backgroundMountains.jpg);
-                background-repeat: no-repeat;
-                background-size: cover;
+            @font-face {
+                font-family: 'Montserrat'; /* Choose a unique font name */
+                src: url('Montserrat/static/Montserrat-Regular.ttf') format('woff2'), /* Specify the path to your font files */
+                /* Add additional source URLs for other font formats if available */
             }
         </style>
         <meta charset="UTF=8"/>
@@ -16,13 +16,13 @@
         
 
         <nav>
-            <li><a href="index.html">Remember Today</a></li>
-            <li><a href="myJournal.html">My Journal</a></li>
-            <li><a href="whyRemember.html">Why Remember?</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><button id="logInSignUp" onClick="openPopUpLogIn()">Log In or Sign Up</button></li>
+            <li><a href="index.html" class="samePage">home</a></li>
+            <li><a href="myJournal.html">my journal</a></li>
+            <li><a href="whyRemember.html">about</a></li>
+            <li><a href="leaderboard.html">leaderboard</a></li>
+            <li><button type="button" class="btn btn-primary" id="logInBtn" onClick="openPopUpLogIn()">Log In</button></li>
+            <li><button type="button" class="btn btn-primary" id="signUpBtn" onClick="openPopUpSignIn()">Sign Up</button></li>
         </nav>
-        <h1>Remember Your Day</h1>
         <form>
             <label for="journalInput">What happened today?</label>
             <input type="text" name="journalInput" id="journalInput">
@@ -48,8 +48,8 @@
                     <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
                 </form>
             </div>
-            <button id="logIntoExisting" onClick="validateLogIn()">Log In</button>
-            <button id="signUp" onClick="validateSignUp()">Sign Up</button>
+            <button class="close" id="logIntoExisting" onClick="validateLogIn()">Log In</button>
+            <button class="close" id="signUp" onClick="validateSignUp()">Sign Up</button>
             
         </div>
     </body>

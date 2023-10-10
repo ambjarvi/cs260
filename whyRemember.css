@@ -2,3 +2,35 @@
     display: grid;
     grid-template-columns: 1.5fr 1fr;
 }
+
+* {
+    font-family: 'Montserrat';
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+nav {
+    list-style: none;
+    background-color: whitesmoke;
+    padding: 1%;
+
+}
+
+nav li {
+    display: inline;
+    padding-right: 1%;
+}
+nav a {
+
+    text-decoration: none;
+    color: black;
+    font-size: 1.125rem;
+}
+nav a:hover {
+    text-decoration: underline;
+    transition: text-decoration 0.5s ease-in-out;
+    
+}

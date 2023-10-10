@@ -1,18 +1,80 @@
+* {
+    --text: #373634;
+    --background: #fffaeb;
+    --primary: #1c5269;
+    --secondary: #c5d5d8;
+    --accent: #2f6312;
+    font-family: 'Montserrat';
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    margin: 0;
+    height: 100vh;
+}
+
 nav {
+    background-color: var(--background);
+    border-bottom: 0.5px solid #bfbfbf;
     list-style: none;
+    padding: 1%;
+
 }
 
 nav li {
     display: inline;
-    padding-right: 4%;
-    padding-top: 1%;
+    padding-right: 1%;
 }
 nav a {
+
     text-decoration: none;
-    color: black;
-    font-size: 25px;
+    font-size: 1.125rem;
 }
 nav a:hover {
-    border-bottom: 1px solid;
-    border-color:black;
+    text-decoration: underline;
+    transition: text-decoration 0.5s ease-in-out;
+    
 }
+
+
+
+.logInBtn .signUpBtn {
+    background-color: var(--primary);
+    position: absolute;
+    right: 0;
+}
+
+.samePage {
+    font-weight: bold;
+}
+
+.popUpLogIn {
+    display: none;
+    position: fixed;
+}
+
+.loginElements {
+    text-align: left;
+}
+
+.close {
+    position: absolute;
+}
+
+
+@media screen and (min-width: 768px){
+    nav a {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        font-size: 1.75rem; /* 1.25rem is equivalent to 20px */
+    }
+}
+
+
+
+
