@@ -3,12 +3,9 @@
     <head>
         <link rel="stylesheet" type="text/css" href="index.css">
         <style>
-            @font-face {
-                font-family: 'Montserrat'; /* Choose a unique font name */
-                src: url('Montserrat/static/Montserrat-Regular.ttf') format('woff2'), /* Specify the path to your font files */
-                /* Add additional source URLs for other font formats if available */
-            }
+            
         </style>
+
         <meta charset="UTF=8"/>
         <title>Remember Your Day</title>
     </head>
@@ -16,29 +13,31 @@
         
 
         <nav>
-            <li><a href="index.html" class="samePage">home</a></li>
+            <li><a href="index.html">home</a></li>
             <li><a href="myJournal.html">my journal</a></li>
             <li><a href="whyRemember.html">about</a></li>
             <li><a href="leaderboard.html">leaderboard</a></li>
-            <li><button type="button" class="btn btn-primary" id="logInBtn" onClick="openPopUpLogIn()">Log In</button></li>
-            <li><button type="button" class="btn btn-primary" id="signUpBtn" onClick="openPopUpSignIn()">Sign Up</button></li>
+            <li><button type="button" class="signUpBtn" onClick="openPopUpSignIn()">Sign Up</button></li>
+            <li><button type="button" class="logInBtn" onClick="openPopUpLogIn()">Log In</button></li>
+            
         </nav>
         <form>
-            <label for="journalInput">What happened today?</label>
-            <input type="text" name="journalInput" id="journalInput">
-            <input type="submit" value="Log My Entry">
+            <li><label for="journalInput" class="questionAsked">What happened today?</label></li>
+            <li><textarea id="journalInput" rows="2" cols="30" placeholder="Type here..."></textarea></li>
+            <li><input type="submit" value="Log My Entry"></li>
+            <li><button id="giveIdea" onClick="generateQuestion()" class="needIdea">Need an Idea?</button></li>
             <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
         </form>
 
-        <button id="giveIdea" onClick="generateQuestion()">Need an Idea?</button>
+        
         <!--this button needs to generate a random question if pressed-->
         <output type="text" id="question"></output>
         <div id="logIn" class="popUpLogIn">
             <div class="logInElements">
                 <form>
-                    <label for="username">Username: </label>
-                    <input type="text" name="username" id="username">
-                    <input type="submit" value="enter username">
+                    <li><label for="username">Username: </label></li>
+                    <li><input type="text" name="username" id="username"></li>
+                    <li><input type="submit" value="enter username"></li>
                     <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
                 </form>
                 <form>
