@@ -9,7 +9,7 @@
     --background: #fffaeb;
     --primary: #0a3d58;
     --secondary: #c5d5d8;
-    --accent: #2f6312;
+    --accent: #1b3b09a7;
     font-family: 'Young Serif';
 }
 
@@ -39,6 +39,8 @@ nav a {
     color: var(--text);
 }
 nav a:hover {
+    text-decoration: none;
+    color: var(--text);
     border-bottom: 2px solid;
     border-color: #2322227e;
     
@@ -49,14 +51,17 @@ form {
     padding-top: 15%;
     text-align: center;
     list-style: none;
+    color: var(--background);
+    text-shadow: -1px 0 var(--accent), 0 1px var(--accent), 1px 0 var(--accent), 0 -1px var(--accent);
 }
 
 form li {
     padding-bottom: 10px;
 }
 
-
-
+form li label {
+    font-size: 2rem;
+}
 
 
 
