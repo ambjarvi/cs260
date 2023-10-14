@@ -1,15 +1,29 @@
+@font-face {
+    font-family: 'Young Serif'; /* Choose a unique font name */
+    src: url('youngSerif/YoungSerif-Regular.ttf') format('woff2'), /* Specify the path to your font files */
+    /* Add additional source URLs for other font formats if available */
+}
+
 * {
-    font-family: 'Montserrat';
+    --text: #232222;
+    --background: #fffaeb;
+    --primary: #0a3d58;
+    --secondary: #c5d5d8;
+    --accent: #1b3b09a7;
+    font-family: 'Young Serif';
 }
 
 body {
+    background: var(--background);
+    color:var(--text);
     margin: 0;
     height: 100vh;
 }
 
 nav {
+    background-color: var(--background);
+    border-bottom: 0.5px solid #bfbfbf;
     list-style: none;
-    background-color: whitesmoke;
     padding: 1%;
 
 }
@@ -19,13 +33,61 @@ nav li {
     padding-right: 1%;
 }
 nav a {
-
     text-decoration: none;
-    color: black;
     font-size: 1.125rem;
+    color: var(--text);
 }
 nav a:hover {
-    text-decoration: underline;
-    transition: text-decoration 0.5s ease-in-out;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 2px solid;
+    border-color: #2322227e;
     
 }
+
+
+form {
+    padding-top: 2%;
+    text-align: center;
+    list-style: none;
+    color: var(--text);
+}
+
+form li {
+    padding-bottom: 5%;
+}
+
+form li label {
+    font-size: 2rem;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-collapse: collapse;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+tr td {
+    border: 1px solid var(--text);
+}
+
+@media screen and (min-width: 768px){
+    nav a {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        font-size: 1.75rem; /* 1.25rem is equivalent to 20px */
+    }
+}
+
+
+
+
