@@ -122,6 +122,20 @@ form li textarea {
     position: absolute;
 }
 
+footer {
+    text-align: center;
+    background-color: var(--background);
+    position: absolute; 
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1rem;
+}
+
 
 @media screen and (min-width: 768px){
     nav a {
