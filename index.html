@@ -39,14 +39,13 @@
             <li class="mainPageElements"><label for="journalInput" class="questionAsked">What happened today?</label></li>
             <li class ="mainPageElements"><textarea id="journalInput" rows="2" cols="30" placeholder="Type here..."></textarea></li>
             <li class ="mainPageElements"><input type="submit" value="Log My Entry" id="logEntry" onClick="logEntry()"></li>
-            <li class ="mainPageElements"><button id="giveIdea" onClick="generateQuestion()" class="needIdea">Need an Idea?</button></li>
             <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
+            <li class ="mainPageElements">
+                <!--this button needs to generate a random question if pressed-->
+                <button id="giveIdea" onClick="generateQuestion()" class="needIdea">Need an Idea?</button>
+                <p id="question"></p>
+            </li>
         </form>
-
-        
-        <!--this button needs to generate a random question if pressed-->
-        <output type="text" id="question"></output>
-        
         <script src="index.js"></script>
     </body>
     <footer>

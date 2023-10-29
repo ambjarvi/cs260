@@ -4,12 +4,18 @@
     modal.style.display = "block";
   });
   
-  document.addEventListener("logInto", function(event) {
+  document.getElementById("logInto").addEventListener("click", function() {
     var modal = document.getElementById("logIn");
     modal.style.display = "none";
   });
 
-  document.addEventListener("signUp", function(event) {
+  document.getElementById("signUp").addEventListener("click", function() {
     var modal = document.getElementById("logIn");
     modal.style.display = "none";
+  });
+  
+  document.getElementById("giveIdea").addEventListener("click", function() {
+    var outputElement = document.getElementById("question");
+    var newText = "random question"
+    outputElement.innerHTML = newText;
   });
