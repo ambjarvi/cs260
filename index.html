@@ -2,9 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" type="text/css" href="index.css">
-        <style>
-            
-        </style>
+        
 
         <meta charset="UTF=8"/>
         <title>Remember Your Day</title>
@@ -17,40 +15,39 @@
             <li><a href="myJournal.html">my journal</a></li>
             <li><a href="whyRemember.html">about</a></li>
             <li><a href="leaderboard.html">leaderboard</a></li>
-            <li><button type="button" class="signUpBtn" onClick="openPopUpSignIn()">Sign Up</button></li>
-            <li><button type="button" class="logInBtn" onClick="openPopUpLogIn()">Log In</button></li>
+            <li><button type="button" class="logInBtn" id="logInBtn">Log In/Sign Up</button></li>
             
         </nav>
-        <form>
-            <li><label for="journalInput" class="questionAsked">What happened today?</label></li>
-            <li><textarea id="journalInput" rows="2" cols="30" placeholder="Type here..."></textarea></li>
-            <li><input type="submit" value="Log My Entry"></li>
-            <li><button id="giveIdea" onClick="generateQuestion()" class="needIdea">Need an Idea?</button></li>
+        <div id="logIn" class="popUpLogIn">
+            <div class="logInElements">
+                <form>
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username">
+                    <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
+                </form>
+                <form>
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" id="password">
+                    <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
+                </form>
+            </div>
+            <button class="close" id="logInto">Log In</button>
+            <button class="close" id="signUp">Sign Up</button>
+            
+        </div>
+        <form class="mainPage">
+            <li class="mainPageElements"><label for="journalInput" class="questionAsked">What happened today?</label></li>
+            <li class ="mainPageElements"><textarea id="journalInput" rows="2" cols="30" placeholder="Type here..."></textarea></li>
+            <li class ="mainPageElements"><input type="submit" value="Log My Entry" id="logEntry" onClick="logEntry()"></li>
+            <li class ="mainPageElements"><button id="giveIdea" onClick="generateQuestion()" class="needIdea">Need an Idea?</button></li>
             <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
         </form>
 
         
         <!--this button needs to generate a random question if pressed-->
         <output type="text" id="question"></output>
-        <div id="logIn" class="popUpLogIn">
-            <div class="logInElements">
-                <form>
-                    <li><label for="username">Username: </label></li>
-                    <li><input type="text" name="username" id="username"></li>
-                    <li><input type="submit" value="enter username"></li>
-                    <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
-                </form>
-                <form>
-                    <label for="password">Password: </label>
-                    <input type="text" name="password" id="password">
-                    <input type="submit" value="enter password">
-                    <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
-                </form>
-            </div>
-            <button class="close" id="logIntoExisting" onClick="validateLogIn()">Log In</button>
-            <button class="close" id="signUp" onClick="validateSignUp()">Sign Up</button>
-            
-        </div>
+        
+        <script src="index.js"></script>
     </body>
     <footer>
         <a href="https://github.com/ambjarvi/cs260/blob/main/README.md">GitHub</a>

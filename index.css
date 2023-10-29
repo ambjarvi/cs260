@@ -59,17 +59,17 @@ nav a:hover {
     
 }
 
-form {
+.mainPage {
     padding-top: 15%;
     text-align: center;
     list-style: none;
 }
 
-form li {
+.mainPageElements {
     padding-bottom: 10px;
 }
 
-form li textarea {
+textarea {
     resize: none;
 }
 
@@ -91,19 +91,6 @@ form li textarea {
     
 }
 
-.signUpBtn {
-    color: var(--primary);
-    background: var(--background);
-    border: none;
-    float: right;
-    padding: 5px;
-}
-
-.signUpBtn:hover {
-    border-bottom: 2px solid;
-    border-color: #0a3d5886;
-    
-}
 
 .samePage {
     color:#1b1a19;
@@ -112,14 +99,27 @@ form li textarea {
 .popUpLogIn {
     display: none;
     position: fixed;
+    background-color: var(--background);
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px dotted #888;
+    width: 50%; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.loginElements {
-    text-align: left;
+.logInElements {
+    padding: 20px;
+    max-width: 80%;
+    text-align: center;
+    position: relative;
 }
 
 .close {
-    position: absolute;
+    align-items: center;
+    top: 0;
+    cursor: pointer;
 }
 
 footer {
