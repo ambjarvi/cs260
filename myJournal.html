@@ -23,14 +23,17 @@
         </nav>
         <form>
             <li><label for="dateInput">What day do you want to remember?</label></li>
-            <li><input type="date" name="dateInput" id="dateInput"></li>
-            <li><input type="submit" value="Remember this Day"></li>
-
+            <li><input type="date" id="dateInput"></li>
+            <li><input type="submit" value="Remember this Day" id="dateBtn"></li>
+            <div id="pastEntry">
+                <li id="displayDate"></li>
+                <p id="journalEntry"></p>
+            </div>
             <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
         </form>
-        <div id="pastEntry"></div>
+        
         <!--will need to program in JS that pastEntry text changes depending on day selected-->
-
+        <script src="myJournal.js"></script>
     </body>
     <footer>
         <a href="https://github.com/ambjarvi/cs260/blob/main/README.md">GitHub</a>
