@@ -46,3 +46,37 @@ I will implement the required technologies in these listed ways.
 - **Login** - Register and login users. Credentials securely stored in database. Can't enter journal entries, view old ones, or share/revcieve memories unless authenticated.
 - **WebSocket** - a leadership board shows who has entered the most journal entries for consecutive days
 - **React** - application ported to use the react web framework
+
+
+
+## HTML deliverable
+
+For this deliverable I built out the structure of my application using HTML.
+
+- **HTML pages** - four HTML pages that represent the ability to login/give entries, view journal entries, about page and leaderboard.
+- **Links** - The home page automatically links to the entries page, about page, leaderboard and vice versa.
+- **Text** - the about page has blocks of text.
+- **Images** - the about page has pictures. 
+- **Login** - button to open login module, username/password text input, sign up and log in buttons.
+- **Database** - The journal entries and random questions represent data in database.
+- **WebSocket** - The count of journaling results (leaderboard) represent realtime data.
+
+## CSS deliverable
+
+For this deliverable I styled my website.
+
+- **Header, footer, and main content body**
+- **Navigation elements** - I dropped the underlines and changed the color for anchor elements, and put hover elements.
+- **Responsive to window resizing** - My app looks great on all window sizes and devices
+- **Application elements** - Used good contrast and whitespace
+- **Application text content** - Consistent fonts
+- **Application images** - photos go on different sides in about page
+
+## JavaScript deliverable
+
+For this deliverable I implemented by JavaScript so that the application works for a multiple users. I also added placeholders for adding random questions.
+
+- **login** - When you press enter or the login button it opens and module, and as you log in the user is stored localStorage and allows you to go to other pages.
+- **database** - Displayed the journal entries and leaderboard. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
+- **WebSocket** - I used the function to periodically increase a random vote count. This will be replaced with WebSocket messages later.
+- **application logic** - The entry number change based up the user's entries.
