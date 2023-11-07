@@ -1,11 +1,22 @@
-document.getElementById("dateBtn").addEventListener("click", function() {
+
+document.getElementById("dateBtn").addEventListener("click", function(event) {
     event.preventDefault();
-    
-    var dateInput = document.getElementById("dateInput");
-    var selectedDate = dateInput.value;
+    var username = localStorage.getItem("currentUser");
+    var selectedDate = document.getElementById("dateInput").value;
+      var existingItems = localStorage.getItem("journal for " + username);
     var displayDate = document.getElementById("displayDate");
-    displayDate.innerText = "Journal Entries from: " + selectedDate;
-    //at this part it will call memory and display past entries
-    var journalEntry = document.getElementById("journalEntry");
-    journalEntry.innerText = "No entries to show.";
+    if(selectedDate == ""){
+        alert("No date selected");
+    } else {
+        displayDate.innerText = "Journal Entries:" + selectedDate;
+    
+        var journalEntry = document.getElementById("journalEntry");
+        if(existingItems == null){
+            journalEntry.innerText = "No entries to show.";
+        } else {
+            journalEntry.innerText = existingItems;
+    }
+    }
+    
+    
 })

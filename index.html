@@ -12,11 +12,12 @@
 
         <nav>
             <li><a href="index.html">home</a></li>
-            <li><a href="myJournal.html">my journal</a></li>
-            <li><a href="whyRemember.html">about</a></li>
-            <li><a href="leaderboard.html">leaderboard</a></li>
+            <li><a href="myJournal.html" id="myJournal">my journal</a></li>
+            <li><a href="whyRemember.html" id ="about">about</a></li>
+            <li><a href="leaderboard.html" id="leaderboard">leaderboard</a></li>
             <li><button type="button" class="logInBtn" id="logInBtn">Log In/Sign Up</button></li>
-            
+            <li><button type="button" class="logOutBtn" id="logOutBtn">Log Out</button></li>
+            <li><button type="button" class="loggedInUsername" id="loggedInUsername"></button></li>
         </nav>
         <div id="logIn" class="popUpLogIn">
             <div class="logInElements">
@@ -38,7 +39,7 @@
         <form class="mainPage">
             <li class="mainPageElements"><label for="journalInput" class="questionAsked">What happened today?</label></li>
             <li class ="mainPageElements"><textarea id="journalInput" rows="2" cols="30" placeholder="Type here..."></textarea></li>
-            <li class ="mainPageElements"><input type="submit" value="Log My Entry" id="logEntry" onClick="logEntry()"></li>
+            <li class ="mainPageElements"><input type="submit" value="Log My Entry" id="logEntry"></li>
             <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
             <li class ="mainPageElements">
                 <!--this button needs to generate a random question if pressed-->

@@ -14,7 +14,8 @@
 }
 
 body {
-    background-image: url('pictures/oceanBackground.jpg'); /* Path to your image */ 
+    /* background-image: url('pictures/oceanBackground.jpg'); /* Path to your image */ 
+    background-color: var(--background);
     background-size: cover; 
     color:var(--text);
     margin: 0;
@@ -89,6 +90,24 @@ textarea {
     border-bottom: 2px solid;
     border-color: #0a3d5886;
     
+}
+
+.logOutBtn {
+    display: none;
+    color: var(--primary);
+    background-color: var(--background);
+    border: none;
+    float: right;
+    padding: 5px;
+}
+
+.loggedInUsername {
+    display: none;
+    color: var(--primary);
+    background-color: var(--background);
+    border: none;
+    float: right;
+    padding: 5px;
 }
 
 

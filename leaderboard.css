@@ -73,8 +73,11 @@ table {
 }
 
 tr td {
+    
     border: 1px solid var(--text);
 }
+
+
 
 footer {
     text-align: center;
