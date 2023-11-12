@@ -15,14 +15,14 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // GetScores
-apiRouter.get('/scores', (_req, res) => {
-  res.send(scores);
+apiRouter.get('/leaderboard', (_req, res) => {
+  res.send(leaderboard);
 });
 
 // SubmitScore
-apiRouter.post('/score', (req, res) => {
-  scores = updateScores(req.body, scores);
-  res.send(scores);
+apiRouter.post('/record', (req, res) => {
+  leaderboard = updateLeaderboard(req.body, leaderboard);
+  res.send(leaderboard);
 });
 
 // Return the application's default page if the path is unknown
@@ -36,24 +36,24 @@ app.listen(port, () => {
 
 // updateScores considers a new score for inclusion in the high scores.
 // The high scores are saved in memory and disappear whenever the service is restarted.
-let scores = [];
-function updateScores(newScore, scores) {
+let leaderboard = [];
+function updateLeaderboard(newRecord, leaderboard) {
   let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
+  for (const [i, prevRecord] of leaderboard.entries()) {
+    if (newRecord.record > prevRecord.record) {
+      leaderboard.splice(i, 0, newRecord);
       found = true;
       break;
     }
   }
 
   if (!found) {
-    scores.push(newScore);
+    leaderboard.push(newRecord);
   }
 
-  if (scores.length > 10) {
-    scores.length = 10;
+  if (leaderboard.length > 10) {
+    leaderboard.length = 10;
   }
 
-  return scores;
+  return leaderboard;
 }
