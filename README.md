@@ -80,3 +80,14 @@ For this deliverable I implemented by JavaScript so that the application works f
 - **database** - Displayed the journal entries and leaderboard. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
 - **WebSocket** - I used the function to periodically increase a random vote count. This will be replaced with WebSocket messages later.
 - **application logic** - The entry number change based up the user's entries.
+
+## Service deliverable
+
+For this deliverable I added backend endpoints that receives votes and returns the leadership totals.
+
+- **Node.js/Express HTTP service** - Hopefully I did this right. 
+- **Static middleware for frontend** - I am not sure if I did this right.
+- **Calls to third party endpoints** - ''
+- **Backend service endpoints** - added!
+- **Frontend calls service endpoints** - I believe I did this right. 
+
