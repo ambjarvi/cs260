@@ -8,8 +8,6 @@ const client = new MongoClient(url);
 const db = client.db('startup');
 const scoreCollection = db.collection('leaderboard');
 
-console.log("start");
-
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
   await client.connect();
@@ -21,7 +19,7 @@ console.log("start");
 
 async function addRecord(inputrecord) {
   const query = { name: inputrecord.name };
-  const update = { $set: {name: inputrecord.name, record: inputrecord.record}};
+  const update = { $set: {name: inputrecord.name, record: parseInt(inputrecord.record)}};
   const options = {upsert:true};
 
   const result = await scoreCollection.updateOne(query,update,options);
@@ -30,10 +28,10 @@ async function addRecord(inputrecord) {
 }
 
 function getHighScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
+  const query = { record: { $gt: 0, $lt: 900 } };
   const options = {
-    sort: { score: -1 },
-    limit: 10,
+    sort: { record: -1 },
+    limit: 5,
   };
   const cursor = scoreCollection.find(query, options);
   return cursor.toArray();
