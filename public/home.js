@@ -1,11 +1,4 @@
 
- if(localStorage.getItem("spot1") == null){
-    localStorage.setItem("spot1", 0);
-    localStorage.setItem("spot2", 0);
-    localStorage.setItem("spot3", 0);
-    localStorage.setItem("spot4", 0);
-    localStorage.setItem("spot5", 0);
-  }
   let loggedIn = false;
   const logInBtn = document.getElementById("logInBtn");
   const logInto = document.getElementById("logInto");
@@ -14,7 +7,7 @@
   const userInputField = document.getElementById("journalInput");
   const storeInputButton = document.getElementById("logEntry");
 
-  if(localStorage.getItem("loggedIn") !== null){
+  if(localStorage.getItem("loggedIn") != null){
     loggedIn = localStorage.getItem("loggedIn");
   }
   if(localStorage.getItem("currentUser") != null){
@@ -42,7 +35,7 @@
   document.getElementById("leaderboard").addEventListener("click", function() {
     console.log(loggedIn);
     if(!loggedIn){
-      alert("You need to log in or sign up before accessing the leaderboard.")
+      alert("You need to log in or sign up before accessing the leaderboard.");
       document.getElementById("leaderboard").href = "index.html";
     }
   });
@@ -54,15 +47,13 @@
   logInto.addEventListener("click", function() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    document.getElementById("username").textContent = "";
-    document.getElementById("password").textContent = "";
-    const loggedInValue = localStorage.getItem("username for " + username) || null;
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
     const realPassword = localStorage.getItem("password for " + username) || null;
-    if(loggedInValue == null){
-      alert("Wrong username");
-    } else if (password == null || !(realPassword === password)){
+
+    if (password == null || !(realPassword === password)){
       alert("Wrong password");
-    } else {
+    } else if (localStorage.getItem(username) != null){
       modal.style.display = "none";
       localStorage.setItem("loggedIn", true);
       localStorage.setItem("currentUser", username);
@@ -70,15 +61,16 @@
       document.getElementById("logOutBtn").style.display = "block";
       document.getElementById("loggedInUsername").style.display = "block";
       document.getElementById("loggedInUsername").textContent = username;
+    } else {
+      alert("Wrong username");
     }
   });
 
   signUp.addEventListener("click", function() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    localStorage.setItem("username for " + username, username);
+    localStorage.setItem(username, 0);
     localStorage.setItem("password for " + username, password);
-    localStorage.setItem("record for " + username, 0);
     modal.style.display = "none";
     localStorage.setItem("currentUser", username);
     localStorage.setItem("loggedIn", true);
@@ -111,16 +103,15 @@
 
   storeInputButton.addEventListener("click", function(event) {
     event.preventDefault();
-    if(localStorage.getItem("currentUser") == null){
+    var username = localStorage.getItem("currentUser") ?? null;
+    var score = localStorage.getItem(username);
+    var currentDate = new Date();
+    var dateStr = currentDate.getFullYear() + '-' + ((currentDate.getMonth() + 1).toString().padStart(2, '0')) + '-' + (currentDate.getDate().toString().padStart(2, '0'));
+    if(username == null){
       alert("You need to log in before logging an entry!");
     } else {
-      var username = localStorage.getItem("currentUser");
+      
       const userValue = userInputField.value; 
-      var currentDate = new Date();
-      const year = currentDate.getFullYear();
-      const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-      const day = currentDate.getDate().toString().padStart(2, '0');
-      const dateStr = year + "-" + month + "-" + day;
       var entry = dateStr + ": " + userValue + "\n";
       var existingItems = localStorage.getItem("journal for " + username);
       if(existingItems == null) {
@@ -128,10 +119,10 @@
       } else {
         existingItems += entry;
       }
-      var entries = parseInt(localStorage.getItem("record for " + username), 10) + 1;
+      var entries = parseInt(localStorage.getItem(username), 10) + 1;
       console.log(entries);
-      localStorage.setItem("record for " + username, entries);
-      addToLeaderboard("record for " + username, entries);
+      localStorage.setItem(username, entries);
+      addToLeaderboard(username);
       localStorage.setItem("journal for " + username, existingItems);
       document.getElementById("journalInput").value = "";
     }
@@ -139,59 +130,100 @@
     
   });
 
-  function addToLeaderboard(username, entries){
-    if(entries == '0'){
-      return;
-    } 
-    if(localStorage.getItem(localStorage.getItem("spot1")) < entries){
-      var tempStorage = localStorage.getItem("spot1");
-      if(already(username)){
-        return;
-      }
-      localStorage.setItem("spot1", username)
-      console.log(tempStorage);
-      console.log(username);
-      addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-    } else if(localStorage.getItem(localStorage.getItem("spot2")) < entries){
-      var tempStorage = localStorage.getItem("spot2");
-      if(already(username)){
-        return;
-      }
-      localStorage.setItem("spot2", username)
-      if(tempStorage !== '0' && !(tempStorage === username)){
-        addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-      }
-      
+  async function addToLeaderboard(username){
+    const entryNum = localStorage.getItem(username);
+    const newRecord = {name: username, record: entryNum}
+    try { 
+      const response = await fetch ('/api/record', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(newRecord),
+      })
 
-    } else if(parseInt(localStorage.getItem(localStorage.getItem("spot3"))) < parseInt(entries)){
-      var tempStorage = localStorage.getItem("spot3");
-      if(already(username)){
-        return;
-      }
-      localStorage.setItem("spot3", username)
-      if(tempStorage !== 0 && tempStorage !== username){
-        addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-      }
-    } else if(parseInt(localStorage.getItem(localStorage.getItem("spot4"))) < parseInt(entries)){
-      var tempStorage = localStorage.getItem("spot4");
-      if(already(username)){
-        return;
-      }
-      localStorage.setItem("spot4", username)
-      if(tempStorage !== 0 && tempStorage !== username){
-        addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-      }
-    } else if(parseInt(localStorage.getItem(localStorage.getItem("spot5"))) < parseInt(entries)){
-      var tempStorage = localStorage.getItem("spot5");
-      if(already(username)){
-        return;
-      }
-      localStorage.setItem("spot5", username)
-      if(tempStorage !== 0 && tempStorage !== username){
-        addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-      }
+      const records = await response.json();
+      localStorage.setItem('leaderboard', JSON.stringigy(records));
+    } catch {
+      this.addToLeaderboardLocal(newRecord);
     }
   }
+
+  function addToLeaderboardLocal(newRecord) {
+    let leaderboard = [];
+    const leaderboardText = localStorage.getItem('leaderboard');
+    if(leaderboardText) {
+      leaderboard = JSON.parse(leaderboardText);
+    }
+
+    let found = false;
+    for(const [i, prevRecord] of leaderboard.entries()) {
+      if(newRecord > prevRecord.record) {
+        leaderboard.splice(i, 0, newRecord);
+        found = true;
+        break;
+      }
+    }
+
+    if(!found) {
+      leaderboard.push(newRecord);
+    }
+
+    if(leaderboard.length > 5) {
+      leaderboard.length = 5;
+    }
+
+    localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    // if(entries == '0'){
+    //   return;
+    // } 
+    // if(localStorage.getItem(localStorage.getItem("spot1")) < entries){
+    //   var tempStorage = localStorage.getItem("spot1");
+    //   if(already(username)){
+    //     return;
+    //   }
+    //   localStorage.setItem("spot1", username)
+    //   console.log(tempStorage);
+    //   console.log(username);
+    //   addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
+    // } else if(localStorage.getItem(localStorage.getItem("spot2")) < entries){
+    //   var tempStorage = localStorage.getItem("spot2");
+    //   if(already(username)){
+    //     return;
+    //   }
+    //   localStorage.setItem("spot2", username)
+    //   if(tempStorage !== '0' && !(tempStorage === username)){
+    //     addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
+    //   }
+      
+
+    // } else if(parseInt(localStorage.getItem(localStorage.getItem("spot3"))) < parseInt(entries)){
+    //   var tempStorage = localStorage.getItem("spot3");
+    //   if(already(username)){
+    //     return;
+    //   }
+    //   localStorage.setItem("spot3", username)
+    //   if(tempStorage !== 0 && tempStorage !== username){
+    //     addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
+    //   }
+    // } else if(parseInt(localStorage.getItem(localStorage.getItem("spot4"))) < parseInt(entries)){
+    //   var tempStorage = localStorage.getItem("spot4");
+    //   if(already(username)){
+    //     return;
+    //   }
+    //   localStorage.setItem("spot4", username)
+    //   if(tempStorage !== 0 && tempStorage !== username){
+    //     addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
+    //   }
+    // } else if(parseInt(localStorage.getItem(localStorage.getItem("spot5"))) < parseInt(entries)){
+    //   var tempStorage = localStorage.getItem("spot5");
+    //   if(already(username)){
+    //     return;
+    //   }
+    //   localStorage.setItem("spot5", username)
+    //   if(tempStorage !== 0 && tempStorage !== username){
+    //     addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
+    //   }
+  }
+  
 
   function already(username) {
     if(localStorage.getItem("spot1") === username) {

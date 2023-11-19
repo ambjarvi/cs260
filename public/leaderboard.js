@@ -22,34 +22,62 @@ var spot3 = localStorage.getItem("spot3");
 var spot4 = localStorage.getItem("spot4");
 var spot5 = localStorage.getItem("spot5");
 
-user1.textContent = "NULL";
-entry1.textContent = "NULL";
-user2.textContent = "NULL";
-entry2.textContent = "NULL";
-user3.textContent = "NULL";
-entry3.textContent = "NULL";
-user4.textContent = "NULL";
-entry4.textContent = "NULL";
-user5.textContent = "NULL";
-entry5.textContent = "NULL";
+async function loadScores() {
+    let leaderboard = [];
+    try {
+      // Get the latest high scores from the service
+      const response = await fetch('/api/leaderboard');
+      leaderboard = await response.json();
+  
+      // Save the scores in case we go offline in the future
+      localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    } catch {
+      // If there was an error then just use the last saved scores
+      const leaderboardText = localStorage.getItem('leaderboard');
+      if (leaderboardText) {
+        leaderboard = JSON.parse(leaderboardText);
+      }
+    }
+    console.log(String(leaderboard[0].name));
+    user1.textContent = String(leaderboard[0].name) || "    ";
+    entry1.textContent = String(leaderboard[0].record) || "    ";
+    user2.textContent = String(leaderboard[1].name) || "    ";
+    entry2.textContent = String(leaderboard[1].record) || "    ";
+    user3.textContent = String(leaderboard[2].name) || "    ";
+    entry3.textContent = String(leaderboard[2].record) || "    ";
+    user4.textContent = String(leaderboard[3].name) || "    ";
+    entry4.textContent = String(leaderboard[3].record) || "    ";
+    user5.textContent = String(leaderboard[4].name) || "     ";
+    entry5.textContent = String(leaderboard[4].record) || "    ";
+  }
 
-if(spot1 !== '0'){
-    user1.textContent = spot1;
-    entry1.textContent = localStorage.getItem(spot1);
-}
-if(spot2 !== '0'){
-    user2.textContent = spot2
-    entry2.textContent = localStorage.getItem(spot2);
-} 
-if(spot3 !== '0'){
-    user3.textContent = spot3;
-    entry3.textContent = localStorage.getItem(spot3);
-} 
-if(spot4 !== '0'){
-    user4.textContent = spot4;
-    entry4.textContent = localStorage.getItem(spot4);
-} 
-if(spot5 !== '0'){
-    user5.textContent = spot5;
-    entry5.textContent = localStorage.getItem(spot5);
-}
+// function displayScores(leaderboard) {
+//     console.log(String(leaderboard[0].name));
+//     console.log(String(leaderboard[0].record));
+    
+// }
+
+
+
+
+
+// if(spot1 !== '0'){
+//     user1.textContent = spot1;
+//     entry1.textContent = localStorage.getItem(spot1);
+// }
+// if(spot2 !== '0'){
+//     user2.textContent = spot2
+//     entry2.textContent = localStorage.getItem(spot2);
+// } 
+// if(spot3 !== '0'){
+//     user3.textContent = spot3;
+//     entry3.textContent = localStorage.getItem(spot3);
+// } 
+// if(spot4 !== '0'){
+//     user4.textContent = spot4;
+//     entry4.textContent = localStorage.getItem(spot4);
+// } 
+// if(spot5 !== '0'){
+//     user5.textContent = spot5;
+//     entry5.textContent = localStorage.getItem(spot5);
+// }

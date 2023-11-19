@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -15,13 +16,15 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // GetScores
-apiRouter.get('/leaderboard', (_req, res) => {
+apiRouter.get('/leaderboard', async (_req, res) => {
+  const leaderboard = await DB.getHighScores();
   res.send(leaderboard);
 });
 
 // SubmitScore
-apiRouter.post('/record', (req, res) => {
-  leaderboard = updateLeaderboard(req.body, leaderboard);
+apiRouter.post('/record', async (req, res) => {
+  DB.addRecord(req.body);
+  const leaderboard = await DB.getHighScores();
   res.send(leaderboard);
 });
 
@@ -36,24 +39,24 @@ app.listen(port, () => {
 
 // updateScores considers a new score for inclusion in the high scores.
 // The high scores are saved in memory and disappear whenever the service is restarted.
-let leaderboard = [];
-function updateLeaderboard(newRecord, leaderboard) {
-  let found = false;
-  for (const [i, prevRecord] of leaderboard.entries()) {
-    if (newRecord.record > prevRecord.record) {
-      leaderboard.splice(i, 0, newRecord);
-      found = true;
-      break;
-    }
-  }
+// let leaderboard = [];
+// function updateLeaderboard(newRecord, leaderboard) {
+//   let found = false;
+//   for (const [i, prevRecord] of leaderboard.entries()) {
+//     if (newRecord.record > prevRecord.record) {
+//       leaderboard.splice(i, 0, newRecord);
+//       found = true;
+//       break;
+//     }
+//   }
 
-  if (!found) {
-    leaderboard.push(newRecord);
-  }
+//   if (!found) {
+//     leaderboard.push(newRecord);
+//   }
 
-  if (leaderboard.length > 10) {
-    leaderboard.length = 10;
-  }
+//   if (leaderboard.length > 10) {
+//     leaderboard.length = 10;
+//   }
 
-  return leaderboard;
-}
+//   return leaderboard;
+// }
