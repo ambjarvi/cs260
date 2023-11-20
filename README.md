@@ -101,10 +101,10 @@ For this deliverable I stored the record of journaling in the database.
 
 ## Login deliverable
 
-For this deliverable I associate the votes with the logged in user.
+For this deliverable I associate the journal entries/records with the logged in user.
 
 - **User registration** - Creates a new account in the database.
-- **existing user** - Stores the votes under the same user if the user already exists.
-- **Use MongoDB to store credentials** - Stores both user and their votes.
-- **Restricts functionality** - You cannot vote until you have logged in. This is restricted on the frontend only. 😔
+- **existing user** - Stores the new journal entry under the same user if the user already exists.
+- **Use MongoDB to store credentials** - Stores both user and their record #.
+- **Restricts functionality** - You cannot log an entry or go to other pages w/o logging in successfully.
 
