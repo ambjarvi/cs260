@@ -89,5 +89,22 @@ For this deliverable I added backend endpoints that receives votes and returns t
 - **Static middleware for frontend** - I am not sure if I did this right.
 - **Calls to third party endpoints** - ''
 - **Backend service endpoints** - added!
-- **Frontend calls service endpoints** - I believe I did this right. 
+- **Frontend calls service endpoints** - I believe I did this right.
+  
+## DB deliverable
+
+For this deliverable I stored the record of journaling in the database.
+
+- **MongoDB Atlas database created** - created!
+- **Endpoints for data** - My endpoints process the data and send it to Mongo.
+- **Stores data in MongoDB** - done!
+
+## Login deliverable
+
+For this deliverable I associate the votes with the logged in user.
+
+- **User registration** - Creates a new account in the database.
+- **existing user** - Stores the votes under the same user if the user already exists.
+- **Use MongoDB to store credentials** - Stores both user and their votes.
+- **Restricts functionality** - You cannot vote until you have logged in. This is restricted on the frontend only. 😔
 
