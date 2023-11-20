@@ -45,43 +45,78 @@
   });
   
   logInto.addEventListener("click", function() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    const realPassword = localStorage.getItem("password for " + username) || null;
+    loginOrCreate(`/api/auth/login`);
+  //   const username = document.getElementById("username").value;
+  //   const password = document.getElementById("password").value;
+  //   document.getElementById("username").value = "";
+  //   document.getElementById("password").value = "";
+  //   const realPassword = localStorage.getItem("password for " + username) || null;
 
-    if (password == null || !(realPassword === password)){
-      alert("Wrong password");
-    } else if (localStorage.getItem(username) != null){
-      modal.style.display = "none";
-      localStorage.setItem("loggedIn", true);
-      localStorage.setItem("currentUser", username);
-      logInBtn.style.display = "none";
-      document.getElementById("logOutBtn").style.display = "block";
-      document.getElementById("loggedInUsername").style.display = "block";
-      document.getElementById("loggedInUsername").textContent = username;
-    } else {
-      alert("Wrong username");
-    }
+  //   if (password == null || !(realPassword === password)){
+  //     alert("Wrong password");
+  //   } else if (localStorage.getItem(username) != null){
+  //     modal.style.display = "none";
+  //     localStorage.setItem("loggedIn", true);
+  //     localStorage.setItem("currentUser", username);
+  //     logInBtn.style.display = "none";
+  //     document.getElementById("logOutBtn").style.display = "block";
+  //     document.getElementById("loggedInUsername").style.display = "block";
+  //     document.getElementById("loggedInUsername").textContent = username;
+  //   } else {
+  //     alert("Wrong username");
+  //   }
   });
 
   signUp.addEventListener("click", function() {
-    const username = document.getElementById("username").value;
+    loginOrCreate(`/api/auth/create`);
+
+    // const username = document.getElementById("username").value;
+    // const password = document.getElementById("password").value;
+    // localStorage.setItem(username, 0);
+    // localStorage.setItem("password for " + username, password);
+    // modal.style.display = "none";
+    // localStorage.setItem("currentUser", username);
+    // localStorage.setItem("loggedIn", true);
+    // logInBtn.style.display = "none";
+    // document.getElementById("logOutBtn").style.display = "block";
+    // document.getElementById("loggedInUsername").style.display = "block";
+    // document.getElementById("loggedInUsername").textContent = username;
+  });
+
+  async function loginOrCreate(endpoint) {
+    const userName = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    localStorage.setItem(username, 0);
-    localStorage.setItem("password for " + username, password);
+  const response = await fetch(endpoint, {
+    method: 'post',
+    body: JSON.stringify({ name: userName, password: password }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+
+  if (response.ok) {
+    localStorage.setItem("currentUser", userName);
     modal.style.display = "none";
-    localStorage.setItem("currentUser", username);
     localStorage.setItem("loggedIn", true);
     logInBtn.style.display = "none";
     document.getElementById("logOutBtn").style.display = "block";
     document.getElementById("loggedInUsername").style.display = "block";
-    document.getElementById("loggedInUsername").textContent = username;
-  });
+    document.getElementById("loggedInUsername").textContent = userName;
+  } else {
+    const body = await response.json();
+    //const modalEl = document.querySelector('#msgModal');
+    alert("⚠ Error: " + String(body.msg));
+    //const msgModal = new bootstrap.Modal(modalEl, {});
+    //msgModal.show();
+  }
+}
+
 
   document.getElementById("logOutBtn").addEventListener("click", function() {
-    localStorage.setItem("currentUser", null);
+    localStorage.removeItem("currentUser");
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    }).then(() => (window.location.href = '/'));
     localStorage.setItem("loggedIn", false);
     logInBtn.style.display = "block";
     document.getElementById("logOutBtn").style.display = "none";
@@ -104,7 +139,6 @@
   storeInputButton.addEventListener("click", function(event) {
     event.preventDefault();
     var username = localStorage.getItem("currentUser") ?? null;
-    var score = localStorage.getItem(username);
     var currentDate = new Date();
     var dateStr = currentDate.getFullYear() + '-' + ((currentDate.getMonth() + 1).toString().padStart(2, '0')) + '-' + (currentDate.getDate().toString().padStart(2, '0'));
     if(username == null){
@@ -119,9 +153,6 @@
       } else {
         existingItems += entry;
       }
-      var entries = parseInt(localStorage.getItem(username), 10) + 1;
-      console.log(entries);
-      localStorage.setItem(username, entries);
       addToLeaderboard(username);
       localStorage.setItem("journal for " + username, existingItems);
       document.getElementById("journalInput").value = "";
@@ -131,8 +162,9 @@
   });
 
   async function addToLeaderboard(username){
-    const entryNum = localStorage.getItem(username);
-    const newRecord = {name: username, record: entryNum}
+    // TODO: get the existing record for the username 
+
+    const newRecord = {name: username}
     try { 
       const response = await fetch ('/api/record', {
         method: 'POST',
@@ -172,56 +204,6 @@
     }
 
     localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
-    // if(entries == '0'){
-    //   return;
-    // } 
-    // if(localStorage.getItem(localStorage.getItem("spot1")) < entries){
-    //   var tempStorage = localStorage.getItem("spot1");
-    //   if(already(username)){
-    //     return;
-    //   }
-    //   localStorage.setItem("spot1", username)
-    //   console.log(tempStorage);
-    //   console.log(username);
-    //   addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-    // } else if(localStorage.getItem(localStorage.getItem("spot2")) < entries){
-    //   var tempStorage = localStorage.getItem("spot2");
-    //   if(already(username)){
-    //     return;
-    //   }
-    //   localStorage.setItem("spot2", username)
-    //   if(tempStorage !== '0' && !(tempStorage === username)){
-    //     addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-    //   }
-      
-
-    // } else if(parseInt(localStorage.getItem(localStorage.getItem("spot3"))) < parseInt(entries)){
-    //   var tempStorage = localStorage.getItem("spot3");
-    //   if(already(username)){
-    //     return;
-    //   }
-    //   localStorage.setItem("spot3", username)
-    //   if(tempStorage !== 0 && tempStorage !== username){
-    //     addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-    //   }
-    // } else if(parseInt(localStorage.getItem(localStorage.getItem("spot4"))) < parseInt(entries)){
-    //   var tempStorage = localStorage.getItem("spot4");
-    //   if(already(username)){
-    //     return;
-    //   }
-    //   localStorage.setItem("spot4", username)
-    //   if(tempStorage !== 0 && tempStorage !== username){
-    //     addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-    //   }
-    // } else if(parseInt(localStorage.getItem(localStorage.getItem("spot5"))) < parseInt(entries)){
-    //   var tempStorage = localStorage.getItem("spot5");
-    //   if(already(username)){
-    //     return;
-    //   }
-    //   localStorage.setItem("spot5", username)
-    //   if(tempStorage !== 0 && tempStorage !== username){
-    //     addToLeaderboard(tempStorage, localStorage.getItem(tempStorage));
-    //   }
   }
   
 
