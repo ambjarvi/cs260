@@ -46,41 +46,10 @@
   
   logInto.addEventListener("click", function() {
     loginOrCreate(`/api/auth/login`);
-  //   const username = document.getElementById("username").value;
-  //   const password = document.getElementById("password").value;
-  //   document.getElementById("username").value = "";
-  //   document.getElementById("password").value = "";
-  //   const realPassword = localStorage.getItem("password for " + username) || null;
-
-  //   if (password == null || !(realPassword === password)){
-  //     alert("Wrong password");
-  //   } else if (localStorage.getItem(username) != null){
-  //     modal.style.display = "none";
-  //     localStorage.setItem("loggedIn", true);
-  //     localStorage.setItem("currentUser", username);
-  //     logInBtn.style.display = "none";
-  //     document.getElementById("logOutBtn").style.display = "block";
-  //     document.getElementById("loggedInUsername").style.display = "block";
-  //     document.getElementById("loggedInUsername").textContent = username;
-  //   } else {
-  //     alert("Wrong username");
-  //   }
   });
 
   signUp.addEventListener("click", function() {
     loginOrCreate(`/api/auth/create`);
-
-    // const username = document.getElementById("username").value;
-    // const password = document.getElementById("password").value;
-    // localStorage.setItem(username, 0);
-    // localStorage.setItem("password for " + username, password);
-    // modal.style.display = "none";
-    // localStorage.setItem("currentUser", username);
-    // localStorage.setItem("loggedIn", true);
-    // logInBtn.style.display = "none";
-    // document.getElementById("logOutBtn").style.display = "block";
-    // document.getElementById("loggedInUsername").style.display = "block";
-    // document.getElementById("loggedInUsername").textContent = username;
   });
 
   async function loginOrCreate(endpoint) {

@@ -41,13 +41,34 @@
             <li class ="mainPageElements"><textarea id="journalInput" rows="2" cols="30" placeholder="Type here..."></textarea></li>
             <li class ="mainPageElements"><input type="submit" value="Log My Entry" id="logEntry"></li>
             <!--should save this value! If not logged in, shows pop-up to log in or sign in, then logs entry. If not, logs entry without popup-->
-            <li class ="mainPageElements">
-                <!--this button needs to generate a random question if pressed-->
-                <button id="giveIdea" onClick="generateQuestion()" class="needIdea">Need an Idea?</button>
-                <p id="question"></p>
-            </li>
+            
         </form>
+
+        
+        <button onclick="showIdeaInput()" id="showIdeaFormButton">Idea List</button>
+        <div id="ideaForm" style="display:none;">
+            <div class="name">
+                <fieldset id="name-controls">
+                  <legend>My Name</legend>
+                  <input id="my-name" type="text" />
+                </fieldset>
+              </div>
+          
+              <fieldset id="chat-controls" disabled>
+                <legend>Chat</legend>
+                <input id="new-msg" type="text" />
+                <button onclick="sendMessage()">Send</button>
+              </fieldset>
+              <div id="chat-text"></div>
+            <!-- <ul id="ideaList"></ul>
+            <input type="text" id="ideaInput" placeholder="Type your idea">
+            <button onclick="addIdea()">Add Idea</button> -->
+            
+        </div>
+        
+        
         <script src="home.js"></script>
+        <script src="ideas.js"></script>
     </body>
     <footer>
         <a href="https://github.com/ambjarvi/cs260/blob/main/README.md">GitHub</a>
