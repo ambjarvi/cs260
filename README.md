@@ -107,4 +107,11 @@ For this deliverable I associate the journal entries/records with the logged in 
 - **existing user** - Stores the new journal entry under the same user if the user already exists.
 - **Use MongoDB to store credentials** - Stores both user and their record #.
 - **Restricts functionality** - You cannot log an entry or go to other pages w/o logging in successfully.
+## WebSocket deliverable
 
+For this deliverable I used webSocket to add a chat feature to create user interaction while journaling
+
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - All chats from users display in real time
