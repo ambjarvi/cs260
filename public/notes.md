@@ -402,3 +402,155 @@ Here's an overview of how promises work and their key concepts:
    ```
 
 Promises are a fundamental part of modern JavaScript and are widely used for handling asynchronous operations, making code more readable, maintainable, and less prone to callback hell (nested callbacks). They provide a structured way to work with asynchronous tasks, improving the overall developer experience.
+
+
+# **Final Review**
+
+1. **What ports are used for HTTP, HTTPS, SSH?**
+   - HTTP typically uses port 80, HTTPS uses port 443, and SSH uses port 22.
+
+2. **What do HTTP status codes in the 300, 400, 500 range indicate?**
+   - 300 Range: Indicates redirection. For example, 301 for permanent redirection, 302 for temporary redirection.
+   - 400 Range: Indicates client errors. For example, 404 for "Not Found," 400 for "Bad Request."
+   - 500 Range: Indicates server errors. For example, 500 for "Internal Server Error," 503 for "Service Unavailable."
+
+3. **What does the HTTP header content-type allow you to do?**
+   - The "Content-Type" HTTP header specifies the media type of the resource, helping the client process the received data correctly.
+   Common values include: 
+   - application/json for JSON data.
+   - text/html for HTML content.
+   - application/x-www-form-urlencoded for form data.
+
+4. **What do the following attributes of a cookie do? Domain, Path, SameSite, HTTPOnly?**
+   - **Domain**: Specifies which domain the cookie is accessible to.The cookie will be sent only to requests originating from this domain. 
+   - **Path**: Restricts the cookie to a specific path within the domain. (Specififes the subset of URLs to which the cookie applies)
+   - **SameSite**: Controls the cookie's sending along with cross-origin requests. It can be set to "Strict", "Lax", or "None"
+   - **HTTPOnly**: Makes the cookie accessible only through the HTTP protocol. (if set, the cookie cannot be accessed through JavaScript, enhancing security against certain types of attacks.)
+
+5. **Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /foo/bar?**
+   Here's the middleware:
+   ```javascript
+   app.use((req, res, next) => {
+     console.log(req.method, req.path);
+     next();
+   });
+   ```
+   - The output for a GET request to `/foo/bar` would be: `GET /foo/bar`.
+
+6. **Given the following Express service code: What does the following JavaScript fetch return?**
+   - Generally, `fetch()` returns a Promise resolving to the Response of the request.
+
+7. **Given the following MongoDB query { cost: { $gt: 10 }, name: /fran.*/ } select all of the matching documents.**
+   - This query selects all documents where `cost` is greater than 10 and `name` field matches the regular expression '/fran.*/' (starts with "fran".)
+
+8. **How should you store user passwords in a database?**
+   - User passwords should be stored in hashed form using algorithms like bcrypt, with salts for added security. Common practices include using bcrypt or Argon2 for hashing.
+
+9. **Assuming the following Node.js service code is executing with websockets, what will be logged to the console of the web browser?**
+   - Generally, WebSocket interactions can send messages to the client to be logged in the browser. 
+
+10. **What is the WebSocket protocol used for?**
+    - The WebSocket protocol is for two-way interactive communication between a user's browser and a server. (WebSocket is a communication protocol that provides full-duplex communication channels over a single TCP connection. It is commonly used for real-time applications, such as chat applications or live updates.)
+
+11. **What is JSX and how are the curly braces rendered?**
+    - JSX is a syntax extension for JavaScript, used in React. Curly braces in JSX to embed JavaScript expressions in the markup. (For example, {props.name} in JSX will render the value of 'props.name.')
+
+12. **Assuming a HTML document with a `<div id="root"></div>` element, what content will the following React component generate?**
+    The React component provided:
+    ```javascript
+    function Welcome(props) {
+      return <h1>Hello, {props.name}</h1>;
+    }
+    function App() {
+      return (
+        <div>
+          <Welcome name="Sara" />
+          <Welcome name="Cahal" />
+          <Welcome name="Edite" />
+        </div>
+      );
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+    ```
+    This will generate:
+    ```html
+    <div>
+      <h1>Hello, Sara</h1>
+      <h1>Hello, Cahal</h1>
+      <h1>Hello, Edite</h1>
+    </div>
+    ```
+
+13. **Assuming a HTML document with a `<div id="root"></div>` element, what content will the following React component generate?**
+    The `Numbers` component:
+    ```javascript
+    function Numbers() {
+      const numbers = [1, 2, 3, 4, 5];
+      const listItems = numbers.map((number) =>
+        <li>{number}</li>
+      );
+      return(<ul>{listItems}</ul>)
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Numbers/>);
+    ```
+    - This generates an unordered list with numbers 1 to 5 as list items. (The provided React component renders an unordered list (<ul>) with list items (<li>) containing numbers from the numbers array.)
+
+14. **What does the following React component do?**
+    The `Example` component:
+    ```javascript
+    function Example() {
+      const [count, setCount] = useState(0);
+      return (
+        <div>
+          <p>You clicked {count} times</p>
+          <button onClick={() => setCount(count + 1)}>
+            Click me
+          </button>
+        </div>
+      );
+    }
+    ```
+    It's a counter component that increments the count each time the button is clicked.
+
+15. **What are React Hooks used for?**
+    - React Hooks are functions that allow functional components to use React state and lifecycle features. They include 'useState' for state management, 'useEffect' for handling side effects, and others. 
+
+16. **What is the useEffect hook used for?**
+    - `useEffect` is for performing side effects in functional components, like data fetching, subscriptions or manual DOM changes.
+
+17. **What does this code do?**
+    The provided code:
+    ```javascript
+    export default function App() {
+      return (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="blogs" element={<Blogs />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="*" element={<NoPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      );
+    }
+    ```
+    - It sets up a router in a React application, defining routes for different components. (For example, the path "/" renders the 'Layout' component with nested routes for "Home," "Blogs," "Contact," and a wildcard route for non-matching paths.)
+
+18. **What role does npm play in web development?**
+    - npm is a package manager for JavaScript and a command-line utility for managing Node.js packages. It is used for installing, sharing, and managing project dependencies.
+
+19. **What does package.json do in an npm project?**
+    - `package.json` is a configuration file for npm projects. It holds project metadata and manages project dependencies, scripts for executing tasks, and other project-specific information.
+
+20. **What does the fetch function do?**
+    - `fetch` function is used in JavaScript to make network requests. It returns a Promise resolving to the Response of the request, whether it is successful or not.
+
+21. **What does Node.js do?**
+    - Node.js is a JavaScript runtime that allows executing JavaScript code on the server side. It enables server-side scripting, making it possible to build scalable network applications.
+
+22. **What does Vite do?**
+    - Vite is a fast, modern front-end build tool that pre-configures development setups for building React, Vue, or vanilla JavaScript applications. It focuses on speed and provides a faster server start, instant module reloading, optimized production builds, and efficient bundling.
