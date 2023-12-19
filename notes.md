@@ -402,3 +402,511 @@ Here's an overview of how promises work and their key concepts:
    ```
 
 Promises are a fundamental part of modern JavaScript and are widely used for handling asynchronous operations, making code more readable, maintainable, and less prone to callback hell (nested callbacks). They provide a structured way to work with asynchronous tasks, improving the overall developer experience.
+
+
+# **Final Review**
+
+1. **What ports are used for HTTP, HTTPS, SSH?**
+   - HTTP typically uses port 80, HTTPS uses port 443, and SSH uses port 22.
+
+2. **What do HTTP status codes in the 300, 400, 500 range indicate?**
+   - 300 Range: Indicates redirection. For example, 301 for permanent redirection, 302 for temporary redirection.
+   - 400 Range: Indicates client errors. For example, 404 for "Not Found," 400 for "Bad Request."
+   - 500 Range: Indicates server errors. For example, 500 for "Internal Server Error," 503 for "Service Unavailable."
+
+3. **What does the HTTP header content-type allow you to do?**
+   - The "Content-Type" HTTP header specifies the media type of the resource, helping the client process the received data correctly.
+   Common values include: 
+   - application/json for JSON data.
+   - text/html for HTML content.
+   - application/x-www-form-urlencoded for form data.
+
+4. **What do the following attributes of a cookie do? Domain, Path, SameSite, HTTPOnly?**
+   - **Domain**: Specifies which domain the cookie is accessible to.The cookie will be sent only to requests originating from this domain. 
+   - **Path**: Restricts the cookie to a specific path within the domain. (Specififes the subset of URLs to which the cookie applies)
+   - **SameSite**: Controls the cookie's sending along with cross-origin requests. It can be set to "Strict", "Lax", or "None"
+   - **HTTPOnly**: Makes the cookie accessible only through the HTTP protocol. (if set, the cookie cannot be accessed through JavaScript, enhancing security against certain types of attacks.)
+
+5. **Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /foo/bar?**
+   Here's the middleware:
+   ```javascript
+   app.use((req, res, next) => {
+     console.log(req.method, req.path);
+     next();
+   });
+   ```
+   - The output for a GET request to `/foo/bar` would be: `GET /foo/bar`.
+
+6. **Given the following Express service code: What does the following JavaScript fetch return?**
+   - Generally, `fetch()` returns a Promise resolving to the Response of the request.
+
+7. **Given the following MongoDB query { cost: { $gt: 10 }, name: /fran.*/ } select all of the matching documents.**
+   - This query selects all documents where `cost` is greater than 10 and `name` field matches the regular expression '/fran.*/' (starts with "fran".)
+
+8. **How should you store user passwords in a database?**
+   - User passwords should be stored in hashed form using algorithms like bcrypt, with salts for added security. Common practices include using bcrypt or Argon2 for hashing.
+
+9. **Assuming the following Node.js service code is executing with websockets, what will be logged to the console of the web browser?**
+   - Generally, WebSocket interactions can send messages to the client to be logged in the browser. 
+
+10. **What is the WebSocket protocol used for?**
+    - The WebSocket protocol is for two-way interactive communication between a user's browser and a server. (WebSocket is a communication protocol that provides full-duplex communication channels over a single TCP connection. It is commonly used for real-time applications, such as chat applications or live updates.)
+
+11. **What is JSX and how are the curly braces rendered?**
+    - JSX is a syntax extension for JavaScript, used in React. Curly braces in JSX to embed JavaScript expressions in the markup. (For example, {props.name} in JSX will render the value of 'props.name.')
+
+12. **Assuming a HTML document with a `<div id="root"></div>` element, what content will the following React component generate?**
+    The React component provided:
+    ```javascript
+    function Welcome(props) {
+      return <h1>Hello, {props.name}</h1>;
+    }
+    function App() {
+      return (
+        <div>
+          <Welcome name="Sara" />
+          <Welcome name="Cahal" />
+          <Welcome name="Edite" />
+        </div>
+      );
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+    ```
+    This will generate:
+    ```html
+    <div>
+      <h1>Hello, Sara</h1>
+      <h1>Hello, Cahal</h1>
+      <h1>Hello, Edite</h1>
+    </div>
+    ```
+
+13. **Assuming a HTML document with a `<div id="root"></div>` element, what content will the following React component generate?**
+    The `Numbers` component:
+    ```javascript
+    function Numbers() {
+      const numbers = [1, 2, 3, 4, 5];
+      const listItems = numbers.map((number) =>
+        <li>{number}</li>
+      );
+      return(<ul>{listItems}</ul>)
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Numbers/>);
+    ```
+    - This generates an unordered list with numbers 1 to 5 as list items. (The provided React component renders an unordered list (<ul>) with list items (<li>) containing numbers from the numbers array.)
+
+14. **What does the following React component do?**
+    The `Example` component:
+    ```javascript
+    function Example() {
+      const [count, setCount] = useState(0);
+      return (
+        <div>
+          <p>You clicked {count} times</p>
+          <button onClick={() => setCount(count + 1)}>
+            Click me
+          </button>
+        </div>
+      );
+    }
+    ```
+    It's a counter component that increments the count each time the button is clicked.
+
+15. **What are React Hooks used for?**
+    - React Hooks are functions that allow functional components to use React state and lifecycle features. They include 'useState' for state management, 'useEffect' for handling side effects, and others. 
+
+16. **What is the useEffect hook used for?**
+    - `useEffect` is for performing side effects in functional components, like data fetching, subscriptions or manual DOM changes.
+
+17. **What does this code do?**
+    The provided code:
+    ```javascript
+    export default function App() {
+      return (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="blogs" element={<Blogs />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="*" element={<NoPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      );
+    }
+    ```
+    - It sets up a router in a React application, defining routes for different components. (For example, the path "/" renders the 'Layout' component with nested routes for "Home," "Blogs," "Contact," and a wildcard route for non-matching paths.)
+
+18. **What role does npm play in web development?**
+    - npm is a package manager for JavaScript and a command-line utility for managing Node.js packages. It is used for installing, sharing, and managing project dependencies.
+
+19. **What does package.json do in an npm project?**
+    - `package.json` is a configuration file for npm projects. It holds project metadata and manages project dependencies, scripts for executing tasks, and other project-specific information.
+
+20. **What does the fetch function do?**
+    - `fetch` function is used in JavaScript to make network requests. It returns a Promise resolving to the Response of the request, whether it is successful or not.
+
+21. **What does Node.js do?**
+    - Node.js is a JavaScript runtime that allows executing JavaScript code on the server side. It enables server-side scripting, making it possible to build scalable network applications.
+
+22. **What does Vite do?**
+    - Vite is a fast, modern front-end build tool that pre-configures development setups for building React, Vue, or vanilla JavaScript applications. It focuses on speed and provides a faster server start, instant module reloading, optimized production builds, and efficient bundling.
+
+
+#STUFF ABOUT MIDDLEWARE
+# Express
+
+📖 **Deeper dive reading**: [MDN Express/Node introduction](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
+
+In the previous instruction you saw how to use Node.js to create a simple web server. This works great for little projects where you are trying to quickly serve up some web content, but to build a production ready application you need a framework with a bit more functionality for easily implementing a full web service. This is where the Node package `Express` come in. Express provides support for:
+
+1. Routing requests for service endpoints
+1. Manipulating HTTP requests with JSON body content
+1. Generating HTTP responses
+1. Using `middleware` to add functionality
+
+Express was created by TJ Holowaychuk and is currently maintained by the [Open.js Foundation](https://openjsf.org/).
+
+![TJ Holowaychuk](webServicesHolowaychuk.jpg)
+
+> “People tell you to not reinvent things, but I think you should … it will teach you things”
+>
+> — TJ Holowaychuk
+
+Everything in Express revolves around creating and using HTTP routing and middleware functions.
+You create an Express application by using NPM to install the Express package and then calling the `express` constructor to create the Express application and listen for HTTP requests on a desired port.
+
+```sh
+➜ npm install express
+```
+
+```js
+const express = require('express');
+const app = express();
+
+app.listen(8080);
+```
+
+With the `app` object you can now add HTTP routing and middleware functions to the application.
+
+#STUFF ABOUT FETCH
+# Fetch
+
+🔑 **Recommended reading**: [MDN Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+
+The ability to make HTTP requests from JavaScript is one of the main technologies that changed the web from static content pages (Web 1.0) to one of web applications (Web 2.0) that fully interact with the user. Microsoft introduced the first API for making HTTP requests from JavaScript with the [XMLHttpRequest API](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
+
+Today, the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) is the preferred way to make HTTP requests. The `fetch` function is built into the browser's JavaScript runtime. This means you can call it from JavaScript code running in a browser.
+
+The basic usage of fetch takes a URL and returns a promise. The promise `then` function takes a callback function that is asynchronously called when the requested URL content is obtained. If the returned content is of type `application/json` you can use the `json` function on the response object to convert it to a JavaScript object.
+
+The following example makes a fetch request to get and display an inspirational quote.
+
+```js
+fetch('https://api.quotable.io/random')
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+```
+
+**Response**
+
+```js
+{
+  content: 'Never put off till tomorrow what you can do today.',
+  author: 'Thomas Jefferson',
+};
+```
+
+To do a POST request you populate the options parameter with the HTTP method and headers.
+
+```js
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: 'test title',
+    body: 'test body',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+```
+
+## ☑ Assignment
+
+Create a fork of this [CodePen](https://codepen.io/leesjensen/pen/ExRoqPz) and experiment.
+
+Replace the quotable service call with a different one. Here are some suggestions.
+
+- **Random user** - https://randomuser.me/api/
+- **Jokes** - https://api.chucknorris.io/jokes/random
+- **GitHub user** - https://api.github.com/users/octocat
+- **Photos** - https://picsum.photos/id/0/info
+- **Quote** - https://api.quotable.io/random
+
+When you are done submit your CodePen URL to the Canvas assignment.
+
+Don't forget to update your GitHub startup repository notes.md with all of the things you learned and want to remember.
+
+## Defining routes
+
+HTTP endpoints are implemented in Express by defining routes that call a function based upon an HTTP path. The Express `app` object supports all of the HTTP verbs as functions on the object. For example, if you want to have a route function that handles an HTTP GET request for the URL path `/store/provo` you would call the `get` method on the app.
+
+```js
+app.get('/store/provo', (req, res, next) => {
+  res.send({name: 'provo'});
+});
+```
+
+The `get` function takes two parameters, a URL path matching pattern, and a callback function that is invoked when the pattern matches. The path matching parameter is used to match against the URL path of an incoming HTTP request.
+
+The callback function has three parameters that represent the HTTP request object (`req`), the HTTP response object (`res`), and the `next` routing function that Express expects to be called if this routing function wants another function to generate a response.
+
+The Express `app` compares the routing function patterns in the order that they are added to the Express `app` object. So if you have two routing functions with patterns that both match, the first one that was added will be called and given the next matching function in the `next` parameter.
+
+In our example above we hard coded the store name to be `provo`. A real store endpoint would allow any store name to be provided as a parameter in the path. Express supports path parameters by prefixing the parameter name with a colon (`:`). Express creates a map of path parameters and populates it with the matching values found in the URL path. You then reference the parameters using the `req.params` object. Using this pattern you can rewrite our getStore endpoint as follows.
+
+```js
+app.get('/store/:storeName', (req, res, next) => {
+  res.send({name: req.params.storeName});
+});
+```
+
+If we run our JavaScript using `node` we can see the result when we make an HTTP request using `curl`.
+
+```sh
+➜ curl localhost:8080/store/orem
+{"name":"orem"}
+```
+
+If you wanted an endpoint that used the POST or DELETE HTTP verb then you just use the `post` or `delete` function on the Express `app` object.
+
+The route path can also include a limited wildcard syntax or even full regular expressions in path pattern. Here are a couple route functions using different pattern syntax.
+
+```js
+// Wildcard - matches /store/x and /star/y
+app.put('/st*/:storeName', (req, res) => res.send({update: req.params.storeName}));
+
+// Pure regular expression
+app.delete(/\/store\/(.+)/, (req, res) => res.send({delete: req.params[0]}));
+```
+
+Notice that in these examples the `next` parameter was omitted. Since we are not calling `next` we do not need to include it as a parameter. However, if you do not call `next` then no following middleware functions will be invoked for the request.
+
+## Using middleware
+
+📖 **Deeper dive reading**: [Express Middleware](https://expressjs.com/en/resources/middleware.html)
+
+The standard [Mediator/Middleware](https://www.patterns.dev/posts/mediator-pattern/) design pattern has two pieces: a mediator and middleware. Middleware represents componentized pieces of functionality. The mediator loads the middleware components and determines their order of execution. When a request comes to the mediator it then passes the request around to the middleware components. Following this pattern, Express is the mediator, and middleware functions are the middleware components.
+
+Express comes with a standard set of middleware functions. These provide functionality like routing, authentication, CORS, sessions, serving static web files, cookies, and logging. Some middleware functions are provided by default, and other ones must be installed using NPM before you can use them. You can also write your own middleware functions and use them with Express.
+
+A middleware function looks very similar to a routing function. That is because routing functions are also middleware functions. The only difference is that routing functions are only called if the associated pattern matches. Middleware functions are always called for every HTTP request unless a preceding middleware function does not call `next`. A middleware function has the following pattern:
+
+```js
+function middlewareName(req, res, next)
+```
+
+The middleware function parameters represent the HTTP request object (`req`), the HTTP response object (`res`), and the `next` middleware function to pass processing to. You should usually call the `next` function after completing processing so that the next middleware function can execute.
+
+![Middleware](webServicesMiddleware.jpg)
+
+### Creating your own middleware
+
+As an example of writing your own middleware, you can create a function that logs out the URL of the request and then passes on processing to the next middleware function.
+
+```js
+app.use((req, res, next) => {
+  console.log(req.originalUrl);
+  next();
+});
+```
+
+Remember that the order that you add your middleware to the Express app object controls the order that the middleware functions are called. Any middleware that does not call the `next` function after doing its processing, stops the middleware chain from continuing.
+
+### Builtin middleware
+
+In addition to creating your own middleware functions, you can use a built-in middleware function. Here is an example of using the `static` middleware function. This middleware responds with static files, found in a given directory, that match the request URL.
+
+```js
+app.use(express.static('public'));
+```
+
+Now if you create a subdirectory in your project directory and name it `public` you can serve up any static content that you would like. For example, you could create an `index.html` file that is the default content for your web service. Then when you call your web service without any path the `index.html` file will be returned.
+
+### Third party middleware
+
+You can also use third party middleware functions by using NPM to install the package and including the package in your JavaScript with the `require` function. The following uses the `cookie-parser` package to simplify the generation and access of cookies.
+
+```sh
+➜ npm install cookie-parser
+```
+
+```js
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+
+app.post('/cookie/:name/:value', (req, res, next) => {
+  res.cookie(req.params.name, req.params.value);
+  res.send({cookie: `${req.params.name}:${req.params.value}`});
+});
+
+app.get('/cookie', (req, res, next) => {
+  res.send({cookie: req.cookies});
+});
+```
+
+It is common for middleware functions to add fields and functions to the `req` and `res` objects so that other middleware can access the functionality they provide. You see this happening when the `cookie-parser` middleware adds the `req.cookies` object for reading cookies, and also adds the `res.cookie` function in order to make it easy to add a cookie to a response.
+
+## Error handling middleware
+
+You can also add middleware for handling errors that occur. Error middleware looks similar to other middleware functions, but it takes an additional `err` parameter that contains the error.
+
+```js
+function errorMiddlewareName(err, req, res, next)
+```
+
+If you wanted to add a simple error handler for anything that might go wrong while processing HTTP requests you could add the following.
+
+```js
+app.use(function (err, req, res, next) {
+  res.status(500).send({type: err.name, message: err.message});
+});
+```
+
+We can test that our error middleware is getting used by adding a new endpoint that generates an error.
+
+```js
+app.get('/error', (req, res, next) => {
+  throw new Error('Trouble in river city');
+});
+```
+
+Now if we use `curl` to call our error endpoint we can see that the response comes from the error middleware.
+
+```sh
+➜ curl localhost:8080/error
+{"type":"Error","message":"Trouble in river city"}
+```
+
+## Putting it all together
+
+Here is a full example of our web service built using Express.
+
+```js
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const app = express();
+
+// Third party middleware - Cookies
+app.use(cookieParser());
+
+app.post('/cookie/:name/:value', (req, res, next) => {
+  res.cookie(req.params.name, req.params.value);
+  res.send({cookie: `${req.params.name}:${req.params.value}`});
+});
+
+app.get('/cookie', (req, res, next) => {
+  res.send({cookie: req.cookies});
+});
+
+// Creating your own middleware - logging
+app.use((req, res, next) => {
+  console.log(req.originalUrl);
+  next();
+});
+
+// Built in middleware - Static file hosting
+app.use(express.static('public'));
+
+// Routing middleware
+app.get('/store/:storeName', (req, res) => {
+  res.send({name: req.params.storeName});
+});
+
+app.put('/st*/:storeName', (req, res) => res.send({update: req.params.storeName}));
+
+app.delete(/\/store\/(.+)/, (req, res) => res.send({delete: req.params[0]}));
+
+// Error middleware
+app.get('/error', (req, res, next) => {
+  throw new Error('Trouble in river city');
+});
+
+app.use(function (err, req, res, next) {
+  res.status(500).send({type: err.name, message: err.message});
+});
+
+// Listening to a network port
+const port = 8080;
+app.listen(port, function () {
+  console.log(`Listening on port ${port}`);
+});
+```
+
+# ☑ Assignment
+
+Create a web service with Express using the following steps.
+
+1. Open your console.
+1. Create a directory named testExpress, and change into that directory
+
+   ```sh
+   mkdir testExpress
+   cd testExpress
+   ```
+
+1. Initialize the directory for use with NPM.
+
+   ```sh
+   npm init -y
+   ```
+
+1. Install the `express` and `cookie-parser` packages.
+
+   ```sh
+   npm install express cookie-parser
+   ```
+
+1. Create a file named `index.js` and paste the example code given above.
+1. Create a directory named `public` and add an `index.html` file with some basic html to the directory.
+
+   ```sh
+   mkdir public
+   print '<h1>Hello express</h1>' > public/index.html
+   ```
+
+1. Run your web service using `node` (`node index.js`)
+
+   ```sh
+   node index.js
+   ```
+
+1. Open another console window and use Curl to try out your web service by making requests to the endpoints.
+
+   ```sh
+   curl localhost:8080
+   curl localhost:8080/error
+   curl localhost:8080/store/orem
+   curl -X PUT localhost:8080/st/orem
+   curl -X DELETE localhost:8080/store/orem
+   curl -X POST -c cookies.txt localhost:8080/cookie/express/tj
+   curl -b cookies.txt localhost:8080/cookie
+   ```
+
+1. Develop a mental model in your head about what these commands are doing and how your service is responding. Perhaps creating a [sequence diagram](https://sequencediagram.org/index.html#initialData=C4S2BsFMAIGVIE4DcQGMYCVIEcCukBnYAgKBIENVgB7BaAYVwXDMeYFoA+eZNSALmgBtAAoBVACoBdaAHois2pAC2JAHbVgMBCADmAC2DRqAMziIU6fuQAONgHQ3cwABQByecABUs-kSUAcuTKkG4ANAA6atAuCDhh0HEEAJTQALyciYT2BJBqACYuUQDe0Lg2+eRagnHYjuQIwQQ5NHFBIdAAvsnJANwkbOAAPEPs7DyWAtDFAETllVoz-DNKyjOdJEA) will help clarify the interaction if it is still unclear.
+
+   ![HTTP request](httpRequestSequenceDiagram.jpg)
+
+When you are done executing the above commands, copy the output from the curl commands and paste it into the Canvas assignment.
