@@ -48,9 +48,9 @@ function App() {
 
       <footer className='bg-dark text-white-50'>
         <div className='container-fluid'>
-          <span className='text-reset'>Author Name(s)</span>
+          <span className='text-reset'>Amber</span>
           <a className='text-reset' href='https://github.com/ambjarvi/cs260/blob/main/README.md'>
-            Source
+            GitHub
           </a>
         </div>
       </footer>
