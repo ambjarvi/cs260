@@ -1,16 +1,5 @@
 
 
-* {
-    --text: #232222;
-    --background: #fffaeb;
-    --primary: #0a3d58;
-    --secondary: #c5d5d8;
-    --accent: #2f6312;
-    font-family: 'Young Serif';
-    background-color: var(--background);
-}
-
-
 
 .buttonElements {
     list-style: none;
@@ -102,17 +91,4 @@ textarea {
     margin-right: auto;
 }
 
-
-
-/* @media screen and (min-width: 768px){
-    nav a {
-        font-size: 1.5rem;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    body {
-        font-size: 1.75rem; 
-    }
-} */
 

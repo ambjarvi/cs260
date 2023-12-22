@@ -1,0 +1,23 @@
+
+
+form {
+    padding-top: 15%;
+    text-align: center;
+    list-style: none;
+    color: var(--background);
+    text-shadow: -1px 0 var(--accent), 0 1px var(--accent), 1px 0 var(--accent), 0 -1px var(--accent);
+}
+
+form li {
+    padding-bottom: 10px;
+}
+
+form li label {
+    font-size: 2rem;
+}
+
+
+
+
+
+
