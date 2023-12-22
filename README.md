@@ -115,3 +115,12 @@ For this deliverable I used webSocket to add a chat feature to create user inter
 - **Frontend makes WebSocket connection** - done!
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - All chats from users display in real time
+
+- ## React deliverable
+
+For this deliverable I converted the application over to use React. 
+
+- **Bundled and transpiled** - done!
+- **Components** - Home, About, Journal and Leaderboard page
+- **Router** - Routing between home about, journal and leaderboard components.
+- **Hooks** - React uses hooks to connect all the states. 
