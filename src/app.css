@@ -1,3 +1,15 @@
+* {
+    --text: #232222;
+    --background: #fffaeb;
+    --primary: #0a3d58;
+    --secondary: #c5d5d8;
+    --accent: #2f6312;
+    font-family: 'Young Serif';
+    background-color: var(--primary);
+}
+
+
+
 .body {
     display: flex;
     flex-direction: column;
@@ -15,6 +27,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    background-color: var(--background);
   }
   
   footer {
@@ -51,181 +64,3 @@
     }
   }
   
-
-/* @font-face {
-    font-family: 'Young Serif';  
-    src: url('youngSerif/YoungSerif-Regular.ttf') format('woff2'), 
-
-}
-
-* {
-    --text: #232222;
-    --background: #fffaeb;
-    --primary: #0a3d58;
-    --secondary: #c5d5d8;
-    --accent: #2f6312;
-    font-family: 'Young Serif';
-}
-
-body {
-    background-image: url('pictures/oceanBackground.jpg'); 
-    background-color: var(--background);
-    background-size: cover; 
-    color:var(--text);
-    margin: 0;
-    height: 100vh;
-}
-
-nav {
-    background-color: var(--background);
-    border-bottom: 0.5px solid #bfbfbf;
-    list-style: none;
-    padding: 1%;
-
-}
-
-nav li {
-    display: inline;
-    padding-right: 1%;
-}
-nav a {
-    text-decoration: none;
-    font-size: 1.125rem;
-    color: var(--text);
-}
-nav a:hover {
-    border-bottom: 2px solid;
-    border-color: #2322227e;
-    
-}
-
-.needIdea {
-    font-size: 1.25rem;
-    padding-top: 3%;
-    border: none;
-    background-color: transparent;
-    color: var(--primary);
-}
-
-.needIdea:hover {
-    border-bottom: 2px solid;
-    border-color: #0a3d5886;
-    
-}
-
-.mainPage {
-    padding-top: 15%;
-    text-align: center;
-    list-style: none;
-}
-
-.mainPageElements {
-    padding-bottom: 10px;
-}
-
-textarea {
-    resize: none;
-}
-
-.questionAsked {
-    font-size: 2rem;
-}
-
-.logInBtn {
-    color: var(--primary);
-    background-color: var(--background);
-    border: none;
-    float: right;
-    padding: 5px;
-}
-
-.logInBtn:hover {
-    border-bottom: 2px solid;
-    border-color: #0a3d5886;
-    
-}
-
-.logOutBtn {
-    display: none;
-    color: var(--primary);
-    background-color: var(--background);
-    border: none;
-    float: right;
-    padding: 5px;
-}
-
-.loggedInUsername {
-    display: none;
-    color: var(--primary);
-    background-color: var(--background);
-    border: none;
-    float: right;
-    padding: 5px;
-}
-
-
-.samePage {
-    color:#1b1a19;
-}
-
-.popUpLogIn {
-    display: none;
-    position: fixed;
-    background-color: var(--background);
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px dotted #888;
-    width: 50%; 
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.logInElements {
-    padding: 20px;
-    max-width: 80%;
-    text-align: center;
-    position: relative;
-}
-
-.close {
-    align-items: center;
-    top: 0;
-    cursor: pointer;
-}
-
-.ideaForm {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-footer {
-    text-align: center;
-    background-color: var(--background);
-    position: absolute; 
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-    text-decoration: none;
-    color: var(--text);
-    font-size: 1rem;
-}
-
-
-@media screen and (min-width: 768px){
-    nav a {
-        font-size: 1.5rem;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    body {
-        font-size: 1.75rem; 
-    }
-}
-
-
-
- */
